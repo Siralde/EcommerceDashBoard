@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import React from 'react';
+import Layout from './components/layout';
+import AuthPage from './containers/AuthPage';
+import { BrowserRouter as Router } from 'react-router-dom';
+import useToken from './customHooks/tokenHook';
 
 function App() {
+
+  const {token, setToken} = useToken(); //My custom hook returns an object instead of an array be carefull
+
+  if(!token) {
+    return <AuthPage setToken={setToken} />
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout>
+        
+      </Layout>
+    </Router>
   );
 }
 

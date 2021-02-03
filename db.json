@@ -1,0 +1,9 @@
+{
+    "login": { "token": 1 },
+    "clients": [
+      { "id": 1, "full-name": "some comment",  "email": 1, "telephone": 1 },  { "id": 2, "full-name": "some comment",  "email": 1, "telephone": 1 }
+    ],
+    "products": [
+      { "id": 1, "name": "some comment", "description": "Some Product", "img": ""}
+    ]
+}
