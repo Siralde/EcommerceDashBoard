@@ -1,4 +1,4 @@
-import './App.scss';
+import './Sass/App.scss';
 import React from 'react';
 import Layout from './components/layout';
 import AuthPage from './containers/AuthPage';

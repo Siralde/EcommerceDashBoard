@@ -37,4 +37,7 @@
   }
 }
 
-@import 'semantic-ui-css/semantic.min.css'
+@import 'semantic-ui-css/semantic.min.css';
+@import "./_variables.scss";
+@import "./components/crudelement.scss";
+@import "./components/newelement.scss";

@@ -1,9 +1,11 @@
 {
     "login": { "token": 1 },
     "clients": [
-      { "id": 1, "full-name": "some comment",  "email": 1, "telephone": 1 },  { "id": 2, "full-name": "some comment",  "email": 1, "telephone": 1 }
+      { "id": 1, "full_name": "Aldemaro Gonzalez",  "email": "aldemaro@gmail.com", "telephone": "642381647" },  
+      { "id": 2, "full_name": "Pepe Suarez",  "email": "pepe@gmail.com", "telephone": "632332211" }
     ],
     "products": [
-      { "id": 1, "name": "some comment", "description": "Some Product", "img": ""}
+      { "id": 1, "name": "Aspiradora", "description": "La mejor Aspiradora", "price": 15, "img": "src/assets/images/conga1.png"},
+      { "id": 2, "name": "Comba", "description": "El mejor robot", "price": 33, "img": "src/assets/images/conga1.png"}
     ]
 }
