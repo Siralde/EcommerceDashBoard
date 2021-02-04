@@ -1,29 +1,17 @@
 import React, { useState } from 'react';
 import { Container } from 'semantic-ui-react';
 import useFetch from '../customHooks/fetchHook';
-import { CrudElement, CreateElement, UpdateElement } from '../components/crudelement';
+import { ReadElement, CreateElement, UpdateElement } from '../components/element';
 
-
-
-
-function ClientPage(props){
+function ClientPage(){
 
     const [response, loading, hasError] = useFetch("http://localhost:3001/clients/")
-
-    const [edit, setEdit] = useState(false)
     
     return (
         <Container>
-            Estas en Cliente CRUD de clientes 
-
-
-            { edit 
-                ? 
-                <UpdateElement/>
-                : 
-                <CreateElement edit={edit} setEdit={setEdit}/>
-            }
-
+            
+            <CreateElement/>
+            
             {loading 
                 ? 
                 <div>Loading...</div> 
@@ -32,23 +20,25 @@ function ClientPage(props){
                     ? 
                     <div>Error occured.</div> 
                     : 
-                    (response ?
-                        response.map(data => <CrudElement 
-                                                key={data.id}
-                                                id={data.id} 
-                                                header={data.full_name} 
-                                                primaryDescription={data.email}
-                                                secundaryDescription={data.telephone}
-                                                img={data.id}
-                                            />
-                                    )
+                    (response 
+                        ?
+                        response.map((data, index) => {              
+                            return (
+                                <ReadElement 
+                                    key={index}
+                                    id={data.id} 
+                                    header={data.full_name} 
+                                    primaryDescription={data.email}
+                                    secundaryDescription={data.telephone}
+                                    img={data.id}
+                                />
+                            )
+                        })
                         :
                         <div>Loading</div>
                     )
-                )
+                ) 
             }
-        
-    
         </Container>
     )
 }

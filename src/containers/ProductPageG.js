@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'semantic-ui-react';
 import useFetch from '../customHooks/fetchHook';
-import { CrudElement, CreateElement } from '../components/crudelement';
+import { ReadElement } from '../components/element';
 
 function ProductPageG(props){
   
@@ -22,7 +22,7 @@ function ProductPageG(props){
                     <div>Error occured.</div> 
                     : 
                     (response ?
-                        response.map(data => <CrudElement 
+                        response.map(data => <ReadElement 
                                                 key={data.id}
                                                 id={data.id} 
                                                 header={data.name} 
