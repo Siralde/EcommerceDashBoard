@@ -34,6 +34,7 @@ export function UpdateElement({id, header, primaryDescription, secundaryDescript
                             name={products ? "name" : "full_name"}
                             defaultValue={header}
                             onChange={changeHandler}
+                            required
                         /> 
                         <img src={Image} alt="@some_lego_guy" />
                     </div>
@@ -42,6 +43,7 @@ export function UpdateElement({id, header, primaryDescription, secundaryDescript
                             name={products ? "description" : "email"}
                             defaultValue={primaryDescription}
                             onChange={changeHandler}
+                            required
                         />
                     </div>
                     <div>
@@ -49,6 +51,7 @@ export function UpdateElement({id, header, primaryDescription, secundaryDescript
                             name={products ? "price": "telephone" }
                             defaultValue={secundaryDescription}
                             onChange={changeHandler}
+                            require
                         />
                     </div>
                     <div className="crud_element_interactions">    

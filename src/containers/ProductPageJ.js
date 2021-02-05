@@ -69,7 +69,6 @@ function ProductPageJ(){
                     setUpdate(false);
                 })
                 .catch(error => {console.log(error);})
-
             }
             else
             {

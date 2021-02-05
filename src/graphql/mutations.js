@@ -1,4 +1,3 @@
-
 export const DeleteProduct = `mutation DeleteProduct($id: ID!){
   deleteProduct(id:$id){
     id
@@ -11,7 +10,7 @@ export const UpdateProduct = `mutation updateProduct($id: ID!, $productInputMode
     name
     description
     price
-    image
+    img
   }
 }`;
 
@@ -21,6 +20,6 @@ export const CreateProduct = `mutation createProduct($productInputModel: Product
     name
     description
     price
-    image
+    img
   }
 }`;
