@@ -6,30 +6,63 @@ import Plus from "../assets/images/add.svg";
 import Cancel from "../assets/images/cancel.png";
 import Check from "../assets/images/check.png";
 
-export function UpdateElement({id, header, primaryDescription, secundaryDescription, img, updateElement, url, cancelUpdate}) 
+export function UpdateElement({id, header, primaryDescription, secundaryDescription, img, updateElement, url, setUpdate, products}) 
 {
+    
+    const [allValues, setAllValues] = useState({
+        id,
+        full_name: header,
+        email: primaryDescription,
+        telephone: secundaryDescription,
+        name: header,
+        description: primaryDescription,
+        price: secundaryDescription,
+        img
+    });
+
+    const changeHandler = e => {
+        setAllValues({...allValues, [e.target.name]: e.target.value})
+    }
+
     return (
         <div className="crud_element">
-            <img src={Image} alt="" />
+            <form onSubmit={(event) => updateElement(event, url, id, allValues, setUpdate)}>
+                <img src={Image} alt="" />
                 <div className="crud_element_body">
-                <div>
-                    <input defaultValue={header}></input> 
-                    <img src={Image} alt="@some_lego_guy" />
+                    <div>
+                        <input 
+                            name={products ? "name" : "full_name"}
+                            defaultValue={header}
+                            onChange={changeHandler}
+                        /> 
+                        <img src={Image} alt="@some_lego_guy" />
+                    </div>
+                    <div>
+                        <input 
+                            name={products ? "description" : "email"}
+                            defaultValue={primaryDescription}
+                            onChange={changeHandler}
+                        />
+                    </div>
+                    <div>
+                        <input 
+                            name={products ? "price": "telephone" }
+                            defaultValue={secundaryDescription}
+                            onChange={changeHandler}
+                        />
+                    </div>
+                    <div className="crud_element_interactions">    
+                        <button type="submit"><img src={Check} alt="Check" /></button>
+                        <img src={Cancel} alt="Cancel" onClick={() => setUpdate(false)}/>
+                    </div>
                 </div>
-                <input defaultValue={primaryDescription}></input>
-                <input defaultValue={secundaryDescription}></input>
-
-                <div className="crud_element_interactions">    
-                    <img src={Check} alt="Check" onClick={()=> updateElement(url, id)} />
-                    <img src={Cancel} alt="Cancel" onClick={() => cancelUpdate(false)}/>
-                </div>
-            </div>
+            </form>
         </div>
     )
 };
 
 
-export function CreateElement( {updateElement}) 
+export function CreateElement( {updateElement, products}) 
 {
     const [update, setUpdate] = useState(false)
 
@@ -37,7 +70,7 @@ export function CreateElement( {updateElement})
         <div>
             {update 
                 ?
-                <UpdateElement updateElement={updateElement} cancelUpdate={setUpdate}/>
+                <UpdateElement updateElement={updateElement} setUpdate={setUpdate} products={products}/>
                 :
                 (<div className="new_element">
                     <img src={Plus} alt="Plus" onClick={ () => { setUpdate(!update) } } />
@@ -48,7 +81,7 @@ export function CreateElement( {updateElement})
     )
 };
 
-export function ReadElement({id, header, primaryDescription, secundaryDescription, img, updateElement, deleteElement, url}) 
+export function ReadElement({id, header, primaryDescription, secundaryDescription, img, updateElement, deleteElement, url, products}) 
 {
 
     const [update, setUpdate] = useState(false)
@@ -65,7 +98,8 @@ export function ReadElement({id, header, primaryDescription, secundaryDescriptio
                     img={id}
                     updateElement={updateElement}
                     url={url}
-                    cancelUpdate={setUpdate}
+                    setUpdate={setUpdate}
+                    products={products}
                 />  
                 :
                 (<div className="crud_element">

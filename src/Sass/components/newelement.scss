@@ -8,36 +8,13 @@
     overflow: hidden;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
     margin: 30px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     img 
     {
-      max-width: 100%;
-    }
-    .new_element_body 
-    {
-      padding: 10px 20px;
-      div 
-      {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        p 
-        {
-          font-weight: bold;
-          span 
-          {
-            display: block;
-            padding: 5px;
-            font-weight: 300;
-            font-size: 0.8rem;
-            color: $secondary;
-          }
-        }
-        img 
-        {
-          max-width: 50px;
-          border-radius: 100%;
-        }
-      }
+      justify-content: center;
+      max-width: 50%;
     }
   }
 
