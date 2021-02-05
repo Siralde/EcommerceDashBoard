@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import Image from "../assets/images/conga1.png";
+import ProductImage from "../assets/images/conga1.png";
+import ProfileImage from "../assets/images/profile.png";
 import Edit from "../assets/images/edit.png";
 import Trash from "../assets/images/trash.png";
 import Plus from "../assets/images/add.svg";
@@ -27,20 +28,22 @@ export function UpdateElement({id, header, primaryDescription, secundaryDescript
     return (
         <div className="crud_element">
             <form onSubmit={(event) => updateElement(event, url, id, allValues, setUpdate)}>
-                <img src={Image} alt="" />
+                <img src={products ? ProductImage : ProfileImage} alt="" />
                 <div className="crud_element_body">
                     <div>
                         <input 
                             name={products ? "name" : "full_name"}
+                            placeholder={products ? "Name" : "Full Name"}
                             defaultValue={header}
                             onChange={changeHandler}
                             required
                         /> 
-                        <img src={Image} alt="@some_lego_guy" />
+                        <img src={products ? ProductImage : ProfileImage}  alt="@some_lego_guy" />
                     </div>
                     <div>
                         <input 
                             name={products ? "description" : "email"}
+                            placeholder={products ? "Description" : "Email"}
                             defaultValue={primaryDescription}
                             onChange={changeHandler}
                             required
@@ -49,13 +52,14 @@ export function UpdateElement({id, header, primaryDescription, secundaryDescript
                     <div>
                         <input 
                             name={products ? "price": "telephone" }
+                            placeholder={products ? "Price": "Telephone" }
                             defaultValue={secundaryDescription}
                             onChange={changeHandler}
                             require
                         />
                     </div>
-                    <div className="crud_element_interactions">    
-                        <button type="submit"><img src={Check} alt="Check" /></button>
+                    <div className="crud_element_interactions" style={styling}>    
+                        <button type="submit" style={mySummitButton}><img src={Check} alt="Check" /></button>
                         <img src={Cancel} alt="Cancel" onClick={() => setUpdate(false)}/>
                     </div>
                 </div>
@@ -64,13 +68,26 @@ export function UpdateElement({id, header, primaryDescription, secundaryDescript
     )
 };
 
+const mySummitButton = {
+    color: "inherit",
+    background: "none",
+    border: "none",
+    padding: "0",
+    font: "inherit",
+    cursor: "pointer",
+    outline: "inherit"
+};
+
+const styling = {
+    marginTop: "3px"
+}
 
 export function CreateElement( {updateElement, products}) 
 {
     const [update, setUpdate] = useState(false)
 
     return (
-        <div>
+        <>
             {update 
                 ?
                 <UpdateElement updateElement={updateElement} setUpdate={setUpdate} products={products}/>
@@ -80,7 +97,7 @@ export function CreateElement( {updateElement, products})
                 </div>
                 )
             }
-        </div>
+        </>
     )
 };
 
@@ -90,7 +107,7 @@ export function ReadElement({id, header, primaryDescription, secundaryDescriptio
     const [update, setUpdate] = useState(false)
 
     return (
-        <div>
+        <>
             {update 
                 ?
                 <UpdateElement
@@ -106,11 +123,11 @@ export function ReadElement({id, header, primaryDescription, secundaryDescriptio
                 />  
                 :
                 (<div className="crud_element">
-                    <img src={Image} alt="" />
+                    <img src={products ? ProductImage : ProfileImage}  alt="" />
                     <div className="crud_element_body">
                         <div>
                             <p>{header}</p> 
-                            <img src={Image} alt="@some_lego_guy" />
+                            <img src={products ? ProductImage : ProfileImage}  alt="@some_lego_guy" />
                         </div>
 
                         <p>{primaryDescription} </p>
@@ -124,6 +141,15 @@ export function ReadElement({id, header, primaryDescription, secundaryDescriptio
                     </div>
                 </div>)
             }
+        </>
+    )
+};
+
+export function LoadingElement({id, header, primaryDescription, secundaryDescription, img, updateElement, deleteElement, url, products}) 
+{
+    return (
+        <div className="new_element">
+            <img className="spinning" src={Plus} alt="Plus" />
         </div>
     )
 };

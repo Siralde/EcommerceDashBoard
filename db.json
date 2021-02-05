@@ -18,22 +18,18 @@
   ],
   "products": [
     {
+      "id": 1,
+      "name": "Aspiradora",
+      "description": "La mejor Aspiradora",
+      "price": 15,
+      "img": "src/assets/images/conga1.png"
+    },
+    {
       "id": 2,
-      "full_name": "Comba",
-      "telephone": "333",
       "name": "Comba",
-      "description": "dsf",
-      "price": "333",
-      "img": 2
-    },
-    {
-      "id": 3,
-      "name": "Aldemaro Gonzalez Suarez",
-      "price": "H",
-      "description": "H"
-    },
-    {
-      "id": 4
+      "description": "El mejor robot",
+      "price": 33,
+      "img": "src/assets/images/conga1.png"
     }
   ]
 }

@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import { Container } from 'semantic-ui-react';
 import useFetch from '../customHooks/fetchHook';
-import { CreateElement, ReadElement } from '../components/element';
+import { LoadingElement, CreateElement, ReadElement } from '../components/element';
 
 const URL = "http://localhost:3001/products/";
 
@@ -96,14 +95,15 @@ function ProductPageJ(){
     )
     
     return (
-        <Container>
+    
+        <div className="flex-container">
 
         <CreateElement updateElement={updateElement} products={true}/>
 
     
         <>
             {loading ? 
-                <div>Loading...</div> 
+                <LoadingElement/> 
                 : 
                 (hasError 
                     ? 
@@ -124,13 +124,13 @@ function ProductPageJ(){
                                             />
                                     )
                         :
-                        <div>Loading</div>
+                        <LoadingElement/>
                     )
                 )
             }
         </>
     
-        </Container>
+        </div>
     )
 }
 

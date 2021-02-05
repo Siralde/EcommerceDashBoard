@@ -13,10 +13,10 @@
 
 type Product {
   id: ID @fake(type:number)
-  name: String @examples(values:  ["Conga 7090 IA", "Conga 6090 Ultra", "Mambo 10070", "Mambo 10090", "Conga RockStar 900 Ultimate ErgoWet", "Conga 7090 IA", "Mambo 10070"])
+  name: String @examples(values:  ["Conga IA", "Conga Ultra", "Mambo ", "Mambo 1090", "Conga RockStar ErgoWet", "Conga IA", "Mambo 1070"])
   description: String @fake(type: words)
   price: String @fake(type: money)
-  img: String @examples(values:  ["conga2.png", "conga1.png", "conga3.png", "termomix.png"])
+  img: String @examples(values:  ["conga2.png", "conga1.png", "mambo3.png", "termomix.png"])
 }
 
 type Query {

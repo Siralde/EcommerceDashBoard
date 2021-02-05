@@ -1,24 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-// import { Container } from 'semantic-ui-react';
 import useFetch from '../customHooks/fetchHook';
-import { ReadElement, CreateElement } from '../components/element';
+import { LoadingElement, ReadElement, CreateElement } from '../components/element';
 
 const URL = "http://localhost:3001/clients/";
 
 function ClientPage(){
-
-    // async function deleteElement(url = '') {
-    //     const response = await fetch(url, {
-    //       method: 'DELETE', 
-    //       headers: {
-    //         'Content-Type': 'application/json'
-    //       },
-    //     });
-
-
-    //     console.log(response.json());
-    //     return response.json(); // parses JSON response into native JavaScript objects
-    // }
     
     const [response, loading, hasError] = useFetch(URL)
 
@@ -110,14 +96,13 @@ function ClientPage(){
     )
 
     return (
-        <div>
-            
+        <div className="flex-container">
             
             <CreateElement updateElement={updateElement}/>
             
             {loading 
                 ? 
-                <div>Loading...</div> 
+                <LoadingElement/>
                 :
                 (hasError 
                     ? 
@@ -141,7 +126,7 @@ function ClientPage(){
                             )
                         })
                         :
-                        <div>Loading</div>
+                        <LoadingElement/>
                     )
                 ) 
             }

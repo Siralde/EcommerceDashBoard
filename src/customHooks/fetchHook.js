@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function useFetch(url, opts) {
+export default function useFetch(url) {
     const [response, setResponse] = useState(null)
     const [loading, setLoading] = useState(false)
     const [hasError, setHasError] = useState(false)
@@ -8,7 +8,7 @@ export default function useFetch(url, opts) {
     useEffect(() => {
         setLoading(true)
         
-        fetch(url, opts)
+        fetch(url)
         .then( data => {
             // console.log(data.json().then( e => console.log(e)))
             data.json().then( e => setResponse(e) );

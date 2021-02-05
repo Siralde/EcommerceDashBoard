@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Form } from 'semantic-ui-react';
+import { Segment, Form, Button, Container } from 'semantic-ui-react';
 
 async function loginUser(credentials) {
     
@@ -8,7 +8,6 @@ async function loginUser(credentials) {
         headers: {
         'Content-Type': 'application/json'
         }
-        // body: JSON.stringify(credentials)
     })
     .then(data => data.json())
 }
@@ -27,20 +26,28 @@ function AuthPage({setToken}){
     }
 
     return (
-        <Container>
-            <Form onSubmit={handleSubmit}>
-                <label>
-                    <p>Username</p>
-                    <input type="text" onChange={e => setUsername(e.target.value)} />
-                    </label>
-                    <label>
-                    <p>Password</p>
-                    <input type="password" onChange={e => setPassword(e.target.value)} />
-                </label>
-                <button type="submit">Submit</button>
-            </Form>
+        <Container style={AuthStyle}>
+            <Segment piled>
+                <Form onSubmit={handleSubmit}>
+                    <Form.Field>
+                        <label>Username</label>
+                        
+                        <input type="text" onChange={e => setUsername(e.target.value)} />
+                    </Form.Field>
+                    <Form.Field>  
+                        <label> Password </label>
+                        <input type="password" onChange={e => setPassword(e.target.value)} />
+                    </Form.Field>
+                    <Button positive type="submit">Submit</Button>
+                </Form>
+            </Segment>
         </Container>
     )
+}
+
+const AuthStyle = {
+    width: "50%",
+    marginTop: "50px"
 }
 
 export default AuthPage;

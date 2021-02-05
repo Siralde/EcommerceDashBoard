@@ -1,12 +1,11 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import { Container } from 'semantic-ui-react';
 import { listProducts } from '../graphql/queries';
 import {
   DeleteProduct,
   UpdateProduct,
   CreateProduct,
 } from '../graphql/mutations';
-import { CreateElement, ReadElement } from '../components/element';
+import { LoadingElement, CreateElement, ReadElement } from '../components/element';
 
 
 function ProductPageG(props){
@@ -155,14 +154,13 @@ function ProductPageG(props){
 
     
   return (
-      <Container>
+    <div className="flex-container">
 
       <CreateElement updateElement={createElement} products={true}/>
 
-  
       <>
           {allValues.loading ? 
-              <div>Loading...</div> 
+              <LoadingElement/>
               : 
               (allValues.hasError 
                   ? 
@@ -183,13 +181,12 @@ function ProductPageG(props){
                                           />
                                   )
                       :
-                      <div>Loading</div>
+                      <LoadingElement/>
                   )
               )
           }
       </>
-  
-      </Container>
+  </div>
   )
 }
 

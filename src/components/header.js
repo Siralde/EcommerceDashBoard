@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function header() 
 {
     return (
-        <Menu fluid widths={3}>
+        <Menu fluid widths={3} style={style.menu}>
             
             <Menu.Item>
                 <h1>
@@ -34,5 +34,11 @@ function header()
         </Menu>
     )
 };
+const style = {
+    menu: {
+      marginTop: '2em',
+    },
+}
 
 export default header;
+
