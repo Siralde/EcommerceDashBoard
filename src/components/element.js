@@ -92,7 +92,7 @@ export function CreateElement( {updateElement, products})
                 ?
                 <UpdateElement updateElement={updateElement} setUpdate={setUpdate} products={products}/>
                 :
-                (<div className="new_element">
+                (<div data-testid="createElement" className="new_element">
                     <img src={Plus} alt="Plus" onClick={ () => { setUpdate(!update) } } />
                 </div>
                 )

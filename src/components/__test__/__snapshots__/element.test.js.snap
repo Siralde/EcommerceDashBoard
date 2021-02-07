@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="new_element"
+  data-testid="createElement"
+>
+  <img
+    alt="Plus"
+    onClick={[Function]}
+    src="add.svg"
+  />
+</div>
+`;
